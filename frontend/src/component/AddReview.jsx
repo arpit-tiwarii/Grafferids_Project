@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 export default function AddReview({ companyId, onAddReview, onClose }) {
   const [review, setReview] = useState({
@@ -15,7 +16,7 @@ export default function AddReview({ companyId, onAddReview, onClose }) {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-      const response = await axios.post(`http://localhost:5000/company/${companyId}/add-review`, review);
+      const response = await axios.post(`${API_BASE_URL}/company/${companyId}/add-review`, review);
       if(response.status === 201){
         onAddReview(response.data);
         setReview({ fullName: "", subject: "", reviewText: "", rating: 4 });

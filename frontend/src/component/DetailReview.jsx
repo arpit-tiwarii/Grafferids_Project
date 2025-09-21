@@ -1,7 +1,6 @@
 import React from 'react';
 import AddReview from './AddReview';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 const DetailReview = ({ company, onClose }) => {
     const [showAddReview, setShowAddReview] = useState(false);  
     const [reviews, setReviews] = useState(company.reviews || []);
@@ -85,7 +84,6 @@ const DetailReview = ({ company, onClose }) => {
                        />
                        <div 
                          style={{ 
-                           display: 'none',
                            width: '100%', 
                            height: '100%', 
                            borderRadius: '12px',

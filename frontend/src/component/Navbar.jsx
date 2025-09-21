@@ -3,8 +3,6 @@ import { useState } from "react";
 function Navbar(){
 
     const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCity, setSelectedCity] = useState('Indore, Madhya Pradesh, India');
-  const [sortBy, setSortBy] = useState('Name');
 
 
 
@@ -35,8 +33,8 @@ function Navbar(){
             </div>
             <div className="col-md-4 text-end">
               <div className="d-flex justify-content-end gap-3">
-                <a href="#" className="text-decoration-none purple-accent">SignUp</a>
-                <a href="#" className="text-decoration-none purple-accent">Login</a>
+                <button className="btn btn-link text-decoration-none purple-accent p-0">SignUp</button>
+                <button className="btn btn-link text-decoration-none purple-accent p-0">Login</button>
               </div>
             </div>
           </div>

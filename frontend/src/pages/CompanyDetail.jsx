@@ -2,9 +2,43 @@ import { useState, useEffect } from "react";
 import DetailReview from "../component/DetailReview";
 import AddCompany from "../component/AddCompany";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
+
+const dummycompanies = [
+  {
+    id: 1,
+    name: 'Graffersid Web and App Development',
+    address: '816, Shekhar Central, Manorama Ganj, AB road, New Palasia, Indore (M.P.)',
+    rating: 4.5,
+    reviews: 41,
+    foundedDate: '01-01-2016',
+    logo: 'G',
+    logoColor: '#1e40af'
+  },
+  {
+    id: 2,
+    name: 'Code Tech Company',
+    address: '414, Kanha Appartment, Bhawarkua, Indore (M.P.)',
+    rating: 4.5,
+    reviews: 0,
+    regDate: '01-01-2016',
+    logo: '<CT>',
+    logoColor: '#16a34a'
+  },
+  {
+    id: 3,
+    name: 'Innogent Pvt. Ltd.',
+    address: '910, Shekhar Central, Manorama Ganj, AB road, New Palasia, Indore (M.P.)',
+    rating: 4.5,
+    reviews: 0,
+    regDate: '01-01-2016',
+    logo: '💡',
+    logoColor: '#ea580c'
+  }
+];
+
 function CompanyDetail(){
 
-const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [sortBy, setSortBy] = useState('Name');
     const [selectedCompany, setSelectedCompany] = useState(null);
@@ -16,7 +50,7 @@ const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/company/get-All-Company');
+        const response = await axios.get(`${API_BASE_URL}/company/get-All-Company`);
         if (response.status === 201) {
           const data = response.data;
           console.log('Fetched companies data:', data);
@@ -67,38 +101,6 @@ const [searchTerm, setSearchTerm] = useState('');
 
     setFilteredCompanies(filtered);
   }, [companies, selectedCity, sortBy]);
-const dummycompanies = [
-    {
-      id: 1,
-      name: 'Graffersid Web and App Development',
-      address: '816, Shekhar Central, Manorama Ganj, AB road, New Palasia, Indore (M.P.)',
-      rating: 4.5,
-      reviews: 41,
-      foundedDate: '01-01-2016',
-      logo: 'G',
-      logoColor: '#1e40af'
-    },
-    {
-      id: 2,
-      name: 'Code Tech Company',
-      address: '414, Kanha Appartment, Bhawarkua, Indore (M.P.)',
-      rating: 4.5,
-      reviews: 0,
-      regDate: '01-01-2016',
-      logo: '<CT>',
-      logoColor: '#16a34a'
-    },
-    {
-      id: 3,
-      name: 'Innogent Pvt. Ltd.',
-      address: '910, Shekhar Central, Manorama Ganj, AB road, New Palasia, Indore (M.P.)',
-      rating: 4.5,
-      reviews: 0,
-      regDate: '01-01-2016',
-      logo: '💡',
-      logoColor: '#ea580c'
-    }
-  ];
 
     const handleDetailReview = (company) => {
     setSelectedCompany(company);
@@ -245,7 +247,6 @@ const renderStars = (rating) => {
                                       />
                                       <div 
                                         style={{ 
-                                          display: 'none',
                                           width: '100%', 
                                           height: '100%', 
                                           borderRadius: '12px',

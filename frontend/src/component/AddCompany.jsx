@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 function AddCompany({ onAddCompany, onClose }) {
   const [company, setCompany] = useState({
@@ -17,7 +18,7 @@ function AddCompany({ onAddCompany, onClose }) {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-      const response = await axios.post('http://localhost:5000/company/add-company', company);
+      const response = await axios.post(`${API_BASE_URL}/company/add-company`, company);
       if(response.status === 201){
         onAddCompany(company);
         setCompany({ companyName: "", location: "", foundedOn: "", logo: "", description: "", city: "" });
