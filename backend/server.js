@@ -11,9 +11,9 @@ server.use(cors())
 server.use(express.json())
 
 
-// server.use('/',(req,res)=>{
-//     res.send('hello grafferId')
-// })
+server.use('/',(req,res)=>{
+    res.send('hello grafferId')
+})
 
 server.use('/company', companyRoute)
 // server.use('/review', reviewRoute)
